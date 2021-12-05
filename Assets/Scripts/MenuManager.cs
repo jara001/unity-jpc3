@@ -92,6 +92,7 @@ public class MenuManager : MonoBehaviour
         {
             bestScore = score;
             bestScoreUser = name;
+            SaveData();
         }
     }
 
