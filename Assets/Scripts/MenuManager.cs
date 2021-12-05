@@ -24,6 +24,7 @@ public class MenuManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             LoadData();
+            UpdatePlayerName();
         }
         else
         {
@@ -74,6 +75,11 @@ public class MenuManager : MonoBehaviour
 
             UpdateBestScoreText();
         }
+    }
+
+    void UpdatePlayerName()
+    {
+        playerText.text = playerName;
     }
 
     public int GetBestScore()
