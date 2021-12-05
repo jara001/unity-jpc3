@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class MenuManager : MonoBehaviour
 {
@@ -37,6 +40,16 @@ public class MenuManager : MonoBehaviour
         playerName = playerText.text;
         SaveData();
         SceneManager.LoadScene(1);
+    }
+
+    public void ExitGame()
+    {
+        SaveData();
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
     }
 
     [System.Serializable]
