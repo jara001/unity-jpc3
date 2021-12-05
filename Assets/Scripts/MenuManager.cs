@@ -76,10 +76,23 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    void UpdateBestScore(string name, int score)
+    public int GetBestScore()
     {
-        bestScore = score;
-        bestScoreUser = name;
+        return bestScore;
+    }
+
+    public string GetBestScoreUser()
+    {
+        return bestScoreUser;
+    }
+
+    public void UpdateBestScore(string name, int score)
+    {
+        if (score > bestScore)
+        {
+            bestScore = score;
+            bestScoreUser = name;
+        }
     }
 
     void UpdateBestScoreText()
