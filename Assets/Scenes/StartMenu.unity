@@ -671,6 +671,8 @@ MonoBehaviour:
   bestScore: 0
   bestScoreUser: 
   playerName: 
+  playerText: {fileID: 1508096600}
+  bestScoreText: {fileID: 1115014103}
 --- !u!4 &1031340547
 Transform:
   m_ObjectHideFlags: 0

@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
 
-    public int bestScore;
-    public string bestScoreUser;
+    int bestScore = 0;
+    string bestScoreUser = "Noone";
 
     public string playerName;
+    [SerializeField] InputField playerText;
+    [SerializeField] TextMeshProUGUI bestScoreText;
 
     private void Awake()
     {
@@ -20,6 +23,7 @@ public class MenuManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            LoadData();
         }
         else
         {
@@ -29,6 +33,8 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        playerName = playerText.text;
+        SaveData();
         SceneManager.LoadScene(1);
     }
 
@@ -65,6 +71,19 @@ public class MenuManager : MonoBehaviour
             bestScore = data.bestScore;
             bestScoreUser = data.bestScoreUser;
             playerName = data.playerName;
+
+            UpdateBestScoreText();
         }
+    }
+
+    void UpdateBestScore(string name, int score)
+    {
+        bestScore = score;
+        bestScoreUser = name;
+    }
+
+    void UpdateBestScoreText()
+    {
+        bestScoreText.text = "Best Score: " + bestScoreUser + " - " + bestScore;
     }
 }
